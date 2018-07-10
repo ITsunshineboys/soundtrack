@@ -9,9 +9,10 @@ import getters from './getters'
 Vue.use(Vuex)
 
 const state = {
-  userInfo: {},
-  questionInfo: [],
-  curVideo: {}
+  userInfo: {}, // 用户信息
+  questionInfo: [], // 所有视频
+  curVideo: {}, // 当前视频
+  position: 0 // 视频位置
 }
 
 export default new Vuex.Store({
@@ -25,7 +26,15 @@ export default new Vuex.Store({
         getItem: key => wx.getStorageSync(key),
         setItem: (key, value) => wx.setStorageSync(key, value),
         // removeItem: () => wx.clearStorage()
-        removeItem: () => {}
+        removeItem: () => {
+          if (wx.getStorageSync('vuex') !== '') {
+            var curItem = JSON.parse(wx.getStorageSync('vuex'))
+            curItem.curVideo = {}
+            curItem.questionInfo = []
+            curItem.position = 0
+            wx.setStorageSync('vuex', JSON.stringify(curItem))
+          }
+        }
       }
     })
   ]

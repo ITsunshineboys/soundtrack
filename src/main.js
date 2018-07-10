@@ -11,7 +11,7 @@ fly.interceptors.request.use((config, promise) => {
   // config.headers['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8'
   return config
 })
-fly.config.baseURL = 'http://192.168.2.158/www.420csd.com'
+fly.config.baseURL = 'https://www.420csd.com'
 Vue.prototype.$http = fly
 
 Vue.config.productionTip = false
@@ -34,7 +34,7 @@ export default {
     window: {
       backgroundTextStyle: 'light',
       navigationBarBackgroundColor: '#fff',
-      navigationBarTitleText: 'WeChat',
+      navigationBarTitleText: '我是玩音达人',
       navigationBarTextStyle: 'black'
     }
   }
